@@ -6,10 +6,11 @@ const db = require('../db/db'); //
 const ytdl = require('ytdl-core');
 
 // Rota para salvar dados no banco
-router.post('/salvar-dados', async (req, res) => {
+router.post('/salve', async (req, res) => {
   // Lógica para salvar dados no banco
   try {
     // Utilize as funções do módulo 'db' para interagir com o banco de dados
+    const result = await db.salvarDados(req.body);
     // Exemplo: const result = await db.salvarDados(req.body);
     res.json({ message: 'Dados salvos com sucesso!' });
   } catch (error) {

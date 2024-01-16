@@ -13,7 +13,7 @@ async function salvarDados(data) {
   let conn;
   try {
     conn = await pool.getConnection();
-    const result = await conn.query('INSERT INTO sua_tabela (coluna1, coluna2) VALUES (?, ?)', [data.valor1, data.valor2]);
+    const result = await conn.query('INSERT INTO player_music (name_band, name_music, link_music,	link_image, genero) VALUES (?, ?,?,?,?)', [data.valor1, data.valor2, data.valor3, data.valor4, data.valor5]);
     return result;
   } catch (error) {
     throw error;
