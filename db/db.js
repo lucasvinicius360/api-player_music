@@ -10,10 +10,11 @@ const pool = mariadb.createPool({
 });
 
 async function salvarDados(data) {
+  console.log(data)
   let conn;
   try {
     conn = await pool.getConnection();
-    const result = await conn.query('INSERT INTO player_music (name_band, name_music, link_music,	link_image, genero) VALUES (?, ?,?,?,?)', [data.valor1, data.valor2, data.valor3, data.valor4, data.valor5]);
+    const result = await conn.query('INSERT INTO player_music (name_band, name_music, link_music,	link_image, genero) VALUES (?, ?,?,?,?)', [data.name_band, data.name_music, data.link_music, data.link_image, data.genero]);
     return result;
   } catch (error) {
     throw error;
