@@ -55,4 +55,15 @@ router.get('/obter-dados', async (req, res) => {
   }
 });
 
+router.get('/getMusic', async (req, res) => {
+  try{
+    const result = await db.everyMusic();
+    res.status(201).json({result: result})
+
+  }catch{
+    console.error(error);
+    res.status(500).json({ error: 'Erro ao obter dados do banco.' });
+  }
+})
+
 module.exports = router;
