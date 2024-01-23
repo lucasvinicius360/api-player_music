@@ -15,8 +15,9 @@ async function salvarDados(data) {
   try {
     conn = await pool.getConnection();
     const result = await conn.query(
-      "INSERT INTO player_music (name_band, name_music, link_music,	link_image, genero) VALUES (?, ?,?,?,?)",
+      "INSERT INTO player_music (id,name_band, name_music, link_music,	link_image, genero) VALUES (?,?, ?,?,?,?)",
       [
+        data.id,
         data.name_band,
         data.name_music,
         data.link_music,
