@@ -33,14 +33,14 @@ async function salvarDados(data) {
   }
 }
 
-async function obterDados() {
+async function getMusicById(id) {
   let conn;
   try {
     conn = await pool.getConnection();
-    const result = await conn.query(
-      "SELECT * FROM users u where u.id_user = ?",
-      [1]
-    );
+    const result = await conn.query("SELECT * FROM player_music where id = ?", [
+      id,
+    ]);
+    console.log(result);
     return result;
   } catch (error) {
     throw error;
@@ -63,6 +63,6 @@ async function everyMusic() {
 
 module.exports = {
   salvarDados,
-  obterDados,
+  getMusicById,
   everyMusic,
 };

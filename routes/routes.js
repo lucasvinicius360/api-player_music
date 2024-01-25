@@ -47,12 +47,16 @@ router.get("/test", (req, res) => {
 });
 
 // Rota para obter dados do banco
-router.get("/obter-dados", async (req, res) => {
+router.get("/getMusicById/:id", async (req, res) => {
   try {
-    const result = await db.obterDados();
+    const id = req.params.id;
+
+    // Faça o que for necessário com o ID, por exemplo, passe-o para a função obterDados
+    const result = await db.getMusicById(id);
+
     res.json({
-      message: "Dados salvos com sucesso!",
-      result: result.toString(),
+      message: "Dados obtidos com sucesso!",
+      result: result,
     });
   } catch (error) {
     console.error(error);
