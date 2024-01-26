@@ -40,7 +40,7 @@ async function getMusicById(id) {
     const result = await conn.query("SELECT * FROM player_music where id = ?", [
       id,
     ]);
-    console.log(result);
+    console.log({"getMusicById":result});
     return result;
   } catch (error) {
     throw error;

@@ -54,10 +54,7 @@ router.get("/getMusicById/:id", async (req, res) => {
     // Faça o que for necessário com o ID, por exemplo, passe-o para a função obterDados
     const result = await db.getMusicById(id);
 
-    res.json({
-      message: "Dados obtidos com sucesso!",
-      result: result,
-    });
+    res.json(result);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Erro ao obter dados do banco." });
@@ -67,6 +64,7 @@ router.get("/getMusicById/:id", async (req, res) => {
 router.get("/getMusic", async (req, res) => {
   try {
     const result = await db.everyMusic();
+
     res.json(result);
   } catch {
     console.error(error);
